@@ -3,13 +3,10 @@
 class RootClass {
     
     var $conn;
-
     function __construct($connection)
     {  
         $this -> conn = $connection;
-        
     }
-
 
     //get all the courses
     function getCourses() {
@@ -46,6 +43,5 @@ class RootClass {
             echo "Something went wrong while fetching branches data!";
         }
     }
-
  }
 ?>

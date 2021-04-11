@@ -12,14 +12,14 @@
 				</div>
 			</header>
 			<div class="container">
-				<div class="col-12 col-md-6 mx-auto my-5">
+				<div class="col-6 mx-auto my-5">
 					<div class="error_modal">
 						<div class="modal-content">
-							<div class="modal-header alert-danger text-danger">
+							<div class="modal-header alert-warning text-warning">
 								<h5 class="modal-title">Error</h5>
 							</div>
 							<div class="modal-body">
-								<p class="mb-0"><?php echo @$_GET['error']; ?></p>
+								<p class="mb-0"><?php echo @$_GET['suberror']; ?></p>
 							</div>
 							<div class="modal-footer">
 								<a href="index.php">

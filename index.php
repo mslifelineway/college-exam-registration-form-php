@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Application Form</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="./css/style.css" />
-	</head>
+	<?php 
+		include "component/headerLinks.php";
+	?>
 
 	<body>
 		<main class="fluid-container">
 			<header>
 				<div class="container">
-					<img src="./cdc_logo.png" alt="" />
+					<div class="head">
+						<div class="logo">
+							<img src="./cdc_logo.png" alt="CDC LOGO" />
+						</div>
+						<div class="app_status">
+							<button class="btn"><a href="login.php">Check Status</a></button>
+						</div>
+					</div>
 				</div>
 			</header>
 			<div class="container">
@@ -157,12 +158,7 @@
 										</div>
 										<div class="form-group col-md-6 mb-0">
 											<small class="form-text text-muted mb-1">Combination</small>
-											<select id="inputCombination" name="inputCombination" class="form-control" required>
-											<option value="">Select ...</option>
-												<option value="1" selected>CSE</option>
-												<option value="M.Tech">M.Tech</option>
-												<option value="B.Pharma">B.Pharma</option>
-											</select>
+											<select id="inputCombination" name="inputCombination" class="form-control" required></select>
 											<div class="invalid-feedback"></div>
 										</div>
 									</div>
@@ -618,22 +614,12 @@
 						<button id="submitBtn" name="submitBtn" class="btn btn-primary btn-lg px-5" type="submit">Submit</button>
 					</div>
 
-					<!-- <div class="row">
-						<div class="col">
-							<div class="card">
-								<div class="card-header"></div>
-								<div class="card-body"></div>
-							</div>
-						</div>
-					</div> -->
 				</form>
-				<!-- <button onclick="getCourseName()">Get Courses</button> -->
 			</div>
 		</main>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<script src="./js/app.js"></script>
+		<?php 
+			include "component/footerScripts.php";
+		?>
 	</body>
 </html>

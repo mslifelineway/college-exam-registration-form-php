@@ -62,10 +62,12 @@ if (isset($_POST['submitBtn'])) {
             $check1->bindParam(":yr", $year);
             $check1->bindParam(":sem", $semester);
             $check1->bindParam(":apas", $appearingAs1);
+            // Add DOB, Name, 
+
             try {
                 $check1->execute();
                 if ($check1 && $check1 -> rowCount() > 0) {
-                    header("Location:../success.php?success=Details already submitted!");
+                    header("Location:../submittedError.php?suberror=Details already submitted!");
                 }
                 else {
                     //new registration 
@@ -115,9 +117,9 @@ if (isset($_POST['submitBtn'])) {
                     try {
                         $query->execute();
                         if ($query) {
-                            header("Location:../success.php?success=Details submitted Successfully");
+                            header("Location:../success.php?success=Application submitted successfully");
                         } else {
-                            header("Location:../error.php?error=Try again Something Went Wrong");
+                            header("Location:../error.php?error=Try again something went wrong");
                         }
                     } catch (Exception $e) {
                         header("Location:../error.php?error=<?php echo $e->getMessage(); ?>");
