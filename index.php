@@ -220,7 +220,6 @@
 									<ul id="social_state" class="grid-container">
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -231,7 +230,6 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -242,7 +240,6 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -253,7 +250,6 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -264,7 +260,6 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -275,7 +270,6 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -285,8 +279,7 @@
 											<label class="form-check-label" for="gridRadios8"> BC-E </label>
 										</li>
 										<li class="form-check">
-											<input
-												onchange="validateSocialState()"
+											<inputmode
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -297,7 +290,6 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
