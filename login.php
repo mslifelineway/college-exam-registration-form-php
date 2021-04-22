@@ -55,5 +55,6 @@
 		<?php 
 			include "component/footerScripts.php";
 		?>
+		<script src="./js/signIn.js"></script>
 	</body>
 </html>

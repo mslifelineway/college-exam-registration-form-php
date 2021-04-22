@@ -35,5 +35,6 @@
 		<?php 
 			include "component/footerScripts.php";
 		?>
+		<script src="./js/app.js"></script>
 	</body>
 </html>

@@ -9,9 +9,13 @@ const inputCombination = document.getElementById("inputCombination");
 const isMale = document.getElementById("maleRadios");
 const isFemale = document.getElementById("femaleRadios");
 const customFile = document.getElementById("customFile");
-const socialState = document.querySelectorAll('input[name="socialState"]');
 const email = document.getElementById("email");
 const mobile = document.getElementById("mobileNo");
+const socialState = document.querySelectorAll('input[name="socialState"]');
+const social_state =document.getElementById('social_state');
+const appearingYear = document.querySelectorAll('input[name="yearofAppearing"]');
+const appearingSem = document.querySelectorAll('input[name="semofAppearing"]');
+const appearingAs = document.querySelectorAll('input[name="appearingAs"]');
 const dateOfBirth = document.getElementById("dob");
 
 // important to check radioState() function( its not working well)
@@ -25,12 +29,17 @@ formApp.addEventListener("submit", (e) => {
 		validateImage() === true &&
 		validateCousre() === true &&
 		validateGender() === true &&
-		validateSocialState() === true &&
+		validateRadioInput(socialState) === true &&
 		validateEmail() === true &&
 		validateMobile() === true &&
-		validateDOB() === true;
-
+		validateDOB() === true &&
+		validateRadioInput(appearingYear) === true &&
+		validateRadioInput(appearingSem) === true &&
+		validateRadioInput(appearingAs) === true;
+		
+		
 	if (isValid === true) {
+		console.log(validateApperingYear())
 		return true;
 	} else {
 		e.preventDefault();
@@ -241,6 +250,7 @@ function validateEmail() {
 }
 
 // --------------------------------------------------------------
+
 // 	Course vaildation
 const courseInput = document.getElementById("inputCourse");
 validateCousre = () => {
@@ -282,6 +292,7 @@ inputCourse.addEventListener("change", function (e) {
 });
 
 // --------------------------------------------------------------
+
 // Gender validation
 function validateGender() {
 	if ((isMale.checked || isFemale.checked) == false) {
@@ -297,50 +308,18 @@ function validateGender() {
 }
 
 // --------------------------------------------------------------
-// social state radio validation
-function validateSocialState() {
-	let valid = true;
-	let a = false;
 
-	for (let i = 0; i < socialState.length; i++) {
-		let checkedInput = socialState[i].checked;
-		if (checkedInput == true) {
-			a = true;
-		}
-		socialState[i].classList.remove("is-invalid");
-	}
-	if (a === false) {
-		for (let i = 0; i < socialState.length; i++) {
-			let checkedInput = socialState[i].checked;
-			if (checkedInput == true) {
-				for (i = 0; i < socialState.length; i++) {
-					socialState[i].classList.remove("is-invalid");
-				}
-				break;
-			} else {
-				socialState[i].classList.add("is-invalid");
-				socialState[0].focus();
-				valid = false;
-			}
-		}
-	}
-	return valid;
-}
-
-// --------------------------------------------------------------
 // Date of Birth validation
 function validateDOB() {
 	//Get the date from the TextBox.
 	let dateString = dateOfBirth.value;
 	// Year - Month - Day
 	let regex = /^(19|20)\d{2}\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
-	console.log(dateString);
 	//Check whether Date Format MM/DD/YYYY is valid.
 	if (regex.test(dateString)) {
 		let parts = dateString.split("-");
 		let dtDOB = new Date(parts[0] + "-" + parts[1] + "-" + parts[2]);
 		let currentDate = new Date();
-		console.log(dtDOB);
 		if (currentDate.getFullYear() - dtDOB.getFullYear() < 18) {
 			setErrorMsg(dateOfBirth, `Eligibility 18 Years.`);
 			dateOfBirth.focus();
@@ -366,4 +345,35 @@ function validateDOB() {
 		dateOfBirth.focus();
 		return false;
 	}
+}
+
+// --------------------------------------------------------------
+// Radio input validation
+function validateRadioInput(inputFiled) {
+	let valid = true;
+	let a = false;
+
+	for (let i = 0; i < inputFiled.length; i++) {
+		let checkedInput = inputFiled[i].checked;
+		if (checkedInput == true) {
+			a = true;
+		}
+		inputFiled[i].classList.remove("is-invalid");
+	}
+	if (a === false) {
+		for (let i = 0; i < inputFiled.length; i++) {
+			let checkedInput = inputFiled[i].checked;
+			if (checkedInput == true) {
+				for (i = 0; i < inputFiled.length; i++) {
+					inputFiled[i].classList.remove("is-invalid");
+				}
+				break;
+			} else {
+				inputFiled[i].classList.add("is-invalid");
+				inputFiled[0].focus();
+				valid = false;
+			}
+		}
+	}
+	return valid;
 }

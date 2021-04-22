@@ -220,7 +220,7 @@
 									<ul id="social_state" class="grid-container">
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -231,7 +231,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -242,7 +242,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -253,7 +253,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -264,7 +264,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -275,7 +275,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -286,7 +286,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -297,7 +297,7 @@
 										</li>
 										<li class="form-check">
 											<input
-												onchange="radioState()"
+												onchange="validateSocialState()"
 												class="form-check-input"
 												type="radio"
 												name="socialState"
@@ -618,6 +618,7 @@
 			</div>
 		</main>
 
+		<script src="./js/app.js"></script>
 		<?php 
 			include "component/footerScripts.php";
 		?>
