@@ -6,7 +6,6 @@ form_sign_in_app.addEventListener('submit', e => {
     let isValid =
         validateRollNumber() === true &&
         validateMobile() === true;
-
     if (isValid === true) {
         return true
     } else {

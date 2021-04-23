@@ -279,7 +279,7 @@
 											<label class="form-check-label" for="gridRadios8"> BC-E </label>
 										</li>
 										<li class="form-check">
-											<inputmode
+											<input
 												class="form-check-input"
 												type="radio"
 												name="socialState"
