@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include "component/headerLinks.php";
+?>
+
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,11 +35,28 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-12 col-md-6 mx-auto my-5">
+			<div class="error_modal">
+				<div class="modal-content">
+					<div class="modal-header alert-danger text-danger">
+						<h5 class="modal-title">Error</h5>
+					</div>
+					<div class="modal-body">
+						<p class="mb-0"><?php echo @$_GET['error']; ?></p>
+					</div>
+					<div class="modal-footer">
+						<a href="index.php">
+							<button type="button" class="btn ">Back</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<?php
+	include "component/footerScripts.php";
+	?>
 	<script src="./js/app.js"></script>
 </body>
 
