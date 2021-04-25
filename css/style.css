@@ -149,4 +149,15 @@ form button.btn-primary {
   }
 }
 
+.trackApplication {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 22px;
+  text-decoration: underline;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */

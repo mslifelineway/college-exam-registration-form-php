@@ -47,13 +47,42 @@ if (isset($_POST['submitBtn'])) {
     $semester = strtoupper($semofAppearing);
     $appearingAs1 = strtoupper($appearingAs);
 
+
+    //image file
+    $filename = $_FILES['image']['name'];
+    $fileTmpname = $_FILES['image']['tmp_name'];
+    $fileSize = $_FILES['image']['size'];
+    $fileError = $_FILES['image']['error'];
+    $fileType = $_FILES['image']['type'];
+
+    $fileExt = explode('.', $filename);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if ($fileError !== 0) {
+        header("Location:../error.php?error=Image file is not valid!");
+    }
+    if (!(in_array($fileActualExt, $allowed))) {
+        header("Location:../error.php?error=Please select an png, jpg or jpeg image!");
+    }
+    if ($fileSize >= 10000000000) {
+        header("Location:../error.php?error=Image file is too big");
+    }
+    $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+    // $fileDestination = '../uploads/' . $fileNameNew;
+    // move_uploaded_file($fileTmpname, $fileDestination . '/' . $filename);
+    $imageFile  = file_get_contents($fileTmpname);
+    // $imageFile  = addslashes(file_get_contents($fileTmpname));
+    //--- image file code -end 
+
     //check whether this student details is available in students table or not
     $check = $conn->prepare("SELECT id FROM students WHERE lower(rollNumber) =:rno AND mobileNumber =:mno");
     $check->bindParam(":rno", $rollNumber);
     $check->bindParam(":mno", $mobileNo);
     try {
         $check->execute();
-        if ($check && $check -> rowCount() > 0) {
+        if ($check && $check->rowCount() > 0) {
 
             //check for already registeration is done or not (by rollNumber, year, semester, appearingAs (regular or etc))
             $check1 = $conn->prepare("SELECT id FROM registrationForms WHERE UPPER(rollNumber) =:rno AND UPPER(year) =:yr AND
@@ -64,28 +93,31 @@ if (isset($_POST['submitBtn'])) {
             $check1->bindParam(":apas", $appearingAs1);
             try {
                 $check1->execute();
-                if ($check1 && $check1 -> rowCount() > 0) {
+                if ($check1 && $check1->rowCount() > 0) {
                     header("Location:../success.php?success=Details already submitted!");
-                }
-                else {
+                } else {
+                    $applicationId =  uniqid('REG_');
                     //new registration 
-                    $query = $conn->prepare("INSERT INTO registrationForms (
-                        collegeCode, rollNumber, name, fatherName, motherName, gender, socialState, houseNumber, street, city,
+                    $query = $conn->prepare("INSERT INTO registrationForms ( application_id,
+                        collegeCode, rollNumber, name, fatherName, motherName, image, image_type, gender, socialState, houseNumber, street, city,
                         state, zip, email, mobileNumber, dob, year, semester, appearingAs, theory1, theory2, theory3, 
                         theory4, theory5, theory6, practical1, practical2, practical3, practical4, practical5, practical6,
                         branch
                     )
-                    VALUES (
-                        :code, :rno, :name, :fn, :mname, :g, :ss, :hn, :str, :ct,
+                    VALUES (:apk_id,
+                        :code, :rno, :name, :fn, :mname, :img, :img_type, :g, :ss, :hn, :str, :ct,
                         :st, :z, :e, :mn, :dob, :yr, :sem, :apas, :th1, :th2, 
                         :th3, :th4, :th5, :th6, :pr1, :pr2, :pr3, :pr4, :pr5, :pr6,
                         :bid
                     )");
                     $query->bindParam(":code", $collegeCode);
+                    $query->bindParam(":apk_id", $applicationId);
                     $query->bindParam(":rno", $rollNumber1);
                     $query->bindParam(":name", $studentName);
                     $query->bindParam(":fn", $fatherName);
                     $query->bindParam(":mname", $motherName);
+                    $query->bindParam(":img", $imageFile);
+                    $query->bindParam(":img_type", $fileType);
                     $query->bindParam(":g", $gender);
                     $query->bindParam(":ss", $socialState);
                     $query->bindParam(":hn", $addressOne);
@@ -115,7 +147,7 @@ if (isset($_POST['submitBtn'])) {
                     try {
                         $query->execute();
                         if ($query) {
-                            header("Location:../success.php?success=Details submitted Successfully");
+                            header("Location:../success.php?success=Details submitted Successfully! <br> <i>Your application id</i> : <b>" . $applicationId . "</b>");
                         } else {
                             header("Location:../error.php?error=Try again Something Went Wrong");
                         }
@@ -123,12 +155,10 @@ if (isset($_POST['submitBtn'])) {
                         header("Location:../error.php?error=<?php echo $e->getMessage(); ?>");
                     }
                 }
-            }
-            catch(Exception $e1) {
+            } catch (Exception $e1) {
                 header("Location:../error.php?error=<?php echo $e->getMessage(); ?>");
             }
-        }
-        else {
+        } else {
             header("Location:../error.php?error=Your details are not in our record. Please contact to the college admin.");
         }
     } catch (Exception $e) {
