@@ -26,7 +26,7 @@ header .app_status .btn {
 header .app_status .btn a {
 	text-decoration: none;
 }
-header .app_status .btn:hover a {
+header .app_status:hover button.btn {
 	color: #337ab7;
 }
 @media (max-width: 768px) {
