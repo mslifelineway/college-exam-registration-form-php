@@ -43,9 +43,9 @@ if (isset($_POST['submitBtn'])) {
 
     //toUpperCase for the other check functionality in future
     $rollNumber1 = strtoupper($rollNumber);
-    $year = strtoupper($yearofAppearing);
-    $semester = strtoupper($semofAppearing);
-    $appearingAs1 = strtoupper($appearingAs);
+    $year = ucwords($yearofAppearing);
+    $semester = ucwords($semofAppearing);
+    $appearingAs1 = ucwords($appearingAs);
 
 
     //image file
@@ -58,13 +58,13 @@ if (isset($_POST['submitBtn'])) {
     $fileExt = explode('.', $filename);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png');
+    $allowed = array('jpg', 'jpeg');
 
     if ($fileError !== 0) {
         header("Location:../error.php?error=Image file is not valid!");
     }
     if (!(in_array($fileActualExt, $allowed))) {
-        header("Location:../error.php?error=Please select an png, jpg or jpeg image!");
+        header("Location:../error.php?error=Please select a JPG or JPEG image!");
     }
     if ($fileSize >= 10000000000) {
         header("Location:../error.php?error=Image file is too big");
@@ -74,7 +74,7 @@ if (isset($_POST['submitBtn'])) {
     // move_uploaded_file($fileTmpname, $fileDestination . '/' . $filename);
     $imageFile  = file_get_contents($fileTmpname);
     // $imageFile  = addslashes(file_get_contents($fileTmpname));
-    //--- image file code -end 
+    //--- image file code -end
 
     //check whether this student details is available in students table or not
     $check = $conn->prepare("SELECT id FROM students WHERE lower(rollNumber) =:rno AND mobileNumber =:mno");
@@ -97,39 +97,39 @@ if (isset($_POST['submitBtn'])) {
                     header("Location:../success.php?success=Details already submitted!");
                 } else {
                     $applicationId =  uniqid('REG_');
-                    //new registration 
+                    //new registration
                     $query = $conn->prepare("INSERT INTO registrationForms ( application_id,
                         collegeCode, rollNumber, name, fatherName, motherName, image, image_type, gender, socialState, houseNumber, street, city,
-                        state, zip, email, mobileNumber, dob, year, semester, appearingAs, theory1, theory2, theory3, 
+                        state, zip, email, mobileNumber, dob, year, semester, appearingAs, theory1, theory2, theory3,
                         theory4, theory5, theory6, practical1, practical2, practical3, practical4, practical5, practical6,
                         branch
                     )
                     VALUES (:apk_id,
                         :code, :rno, :name, :fn, :mname, :img, :img_type, :g, :ss, :hn, :str, :ct,
-                        :st, :z, :e, :mn, :dob, :yr, :sem, :apas, :th1, :th2, 
+                        :st, :z, :e, :mn, :dob, :yr, :sem, :apas, :th1, :th2,
                         :th3, :th4, :th5, :th6, :pr1, :pr2, :pr3, :pr4, :pr5, :pr6,
                         :bid
                     )");
                     $query->bindParam(":code", $collegeCode);
                     $query->bindParam(":apk_id", $applicationId);
                     $query->bindParam(":rno", $rollNumber1);
-                    $query->bindParam(":name", $studentName);
-                    $query->bindParam(":fn", $fatherName);
-                    $query->bindParam(":mname", $motherName);
+                    $query->bindParam(":name", ucwords($studentName));
+                    $query->bindParam(":fn", ucwords($fatherName));
+                    $query->bindParam(":mname", ucwords($motherName));
                     $query->bindParam(":img", $imageFile);
                     $query->bindParam(":img_type", $fileType);
                     $query->bindParam(":g", $gender);
                     $query->bindParam(":ss", $socialState);
-                    $query->bindParam(":hn", $addressOne);
-                    $query->bindParam(":str", $addressTwo);
-                    $query->bindParam(":ct", $city);
-                    $query->bindParam(":st", $state);
+                    $query->bindParam(":hn", ucwords($addressOne));
+                    $query->bindParam(":str", ucwords($addressTwo));
+                    $query->bindParam(":ct", ucwords($city));
+                    $query->bindParam(":st", ucwords($state));
                     $query->bindParam(":z", $pinCode);
                     $query->bindParam(":e", $email);
                     $query->bindParam(":mn", $mobileNo);
                     $query->bindParam(":dob", $dob);
-                    $query->bindParam(":yr", $year);
-                    $query->bindParam(":sem", $semester);
+                    $query->bindParam(":yr", ucwords($year));
+                    $query->bindParam(":sem", ucwords($semester));
                     $query->bindParam(":apas", $appearingAs1);
                     $query->bindParam(":th1", $theoryOne);
                     $query->bindParam(":th2", $theoryTwo);

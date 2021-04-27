@@ -8,7 +8,7 @@ try{
 }
 catch(PDOException $e)
 {
-  echo "Database connection failed due to following errors : " + $e->getMessage();
+  echo "Database connection failed due to following errors : " . $e->getMessage();
 }
 
 

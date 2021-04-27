@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-	<?php 
-		include "component/headerLinks.php";
-	?>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Application Form</title>
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/header.css" />
+</head>
 
 	<body>
 		<main class="fluid-container">
-			<header>
-				<div class="container">
-					<img src="./cdc_logo.png" alt="" />
-				</div>
-			</header>
+			<?php
+				include "component/head.php";
+			?>
+
 			<div class="container">
 				<div class="col-6 mx-auto my-5">
 					<div class="error_modal">
@@ -23,7 +29,7 @@
 							</div>
 							<div class="modal-footer">
 								<a href="index.php">
-									<button type="button" class="btn ">Back</button>
+									<button type="button" class="btn ">Backff</button>
 								</a>
 							</div>
 						</div>
@@ -32,7 +38,7 @@
 			</div>
 		</main>
 
-		<?php 
+		<?php
 			include "component/footerScripts.php";
 		?>
 		<script src="./js/app.js"></script>

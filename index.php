@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-include "component/headerLinks.php";
-?>
+<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Application Form</title>
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/header.css" />
+</head>
 
 <body>
 	<main class="fluid-container">
@@ -14,7 +20,9 @@ include "component/headerLinks.php";
 						<img src="./cdc_logo.png" alt="CDC LOGO" />
 					</div>
 					<div class="app_status">
-						<button class="btn"><a href="login.php">Check Status</a></button>
+						<a href="login.php">
+							<button class="btn">Sign In</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -24,9 +32,6 @@ include "component/headerLinks.php";
 				<div class="row">
 					<div class="col-12">
 						<p>Application Form for Registration in Professional Examination</p>
-					</div>
-					<div class="col-12 trackApplication">
-						<small><a href="login.php" title="Login to track your applications">Login</a></small>
 					</div>
 				</div>
 			</div>

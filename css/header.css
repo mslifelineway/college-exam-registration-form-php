@@ -1,0 +1,29 @@
+header {
+  background: #337ab7;
+  padding: 10px 0;
+}
+header .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header img {
+  width: 250px;
+}
+header .app_status .btn {
+  background: #fff;
+}
+header .app_status .btn a {
+  text-decoration: none;
+}
+header .app_status:hover button.btn {
+  color: #337ab7;
+}
+@media (max-width: 768px) {
+  header {
+    text-align: center;
+  }
+  header img {
+    width: 180px;
+  }
+}

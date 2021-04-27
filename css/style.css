@@ -8,38 +8,16 @@ body {
 	font-family: "Rubik", Arial, sans-serif;
 }
 
-header {
-	background: #337ab7;
-	padding: 10px 0;
-}
-header .head {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-header img {
-	width: 250px;
-}
-header .app_status .btn {
-	background: #fff;
-}
-header .app_status .btn a {
-	text-decoration: none;
-}
-header .app_status:hover button.btn {
-	color: #337ab7;
-}
-@media (max-width: 768px) {
-	header {
-		text-align: center;
-	}
-	header img {
-		width: 180px;
-	}
-}
-
 .text-muted {
 	margin-top: 0;
+}
+
+.bg-info {
+	background-color: #DBEAFE !important;
+}
+
+.w-100{
+	width: 100% !important;
 }
 
 .heading {
@@ -59,12 +37,25 @@ header .app_status:hover button.btn {
 	padding: 0.375rem 0.5rem;
 }
 
+.userImage {
+	max-width: 150px;
+	height: 170px;
+	object-fit: contain;
+	border: 1px solid #E5E7EB;
+	border-radius: 0.375rem;
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+table td, th {
+	vertical-align: middle !important;
+}
+
 form ul {
 	margin: 0;
 	padding: 0;
 }
 form > div:not(:last-child) {
-	padding: 20px 0;
+	padding: 25px 0;
 }
 form > div:not(:last-child):focus-within {
 	background: #f1f5ff;
@@ -161,17 +152,6 @@ form button.btn-primary {
 		display: block;
 		width: 100%;
 	}
-}
-
-.trackApplication {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 22px;
-  text-decoration: underline;
-}
-
-.mt20 {
-  margin-top: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
